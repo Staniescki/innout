@@ -1,11 +1,18 @@
 <?php
 
-require_once(dirname(__FILE__,2). '/src/config/database.php');
+require_once(dirname(__FILE__,2). '/src/config/config.php');
+//require_once(VIEW_PATH . '/login.php');
 
-$sql = 'select * from users';
-$result = Database::getResultFromQuery($sql);
+require_once (MODEL_PATH . '/Login.php');
 
-while($row = $result->fetch_assoc()){
-    print_r($row);
-    echo '<br>';
+$login = new Login([
+    'email' => 'admin@cod3r.com.br',
+    'password' => 'a'
+]);
+
+try {
+    $login->checkLogin();
+    echo "Deu certo :)";
+}catch(Exception $e){
+    echo "Porblema no Login :P";
 }
