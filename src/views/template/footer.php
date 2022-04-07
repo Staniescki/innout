@@ -3,6 +3,6 @@
     <span><i class="icofont-heart text-danger mx-1"></i></span>
     <span>por <span class="text-danger">Diego Staniescki</span></span>
 </footer>
-
+<script src="assets/js/app.js"></script>
 </body>
 </html>
