@@ -1,4 +1,4 @@
-# innout
+# In n' Out (Entrada e Saida).
 Projeto de Ponto Eletronico
 
 Este projeto foi desenvolvido para ponto eletronico via web.
