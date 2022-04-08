@@ -18,7 +18,7 @@ class Model{
     }
 
     public function __get($key){
-        return $this->values[$key];
+        return isset($this->values[$key]) ? $this->values[$key] : null;
     }
 
     public function __set($key, $value){
@@ -56,7 +56,7 @@ class Model{
         }
     }
 
-    public function save() {
+    public function insert() {
         $sql = "INSERT INTO " . static::$tableName . " ("
             . implode(",", static::$colums) . ") VALUES (";
         foreach (static::$colums as $col) {
@@ -67,13 +67,27 @@ class Model{
         $this->id = $id;
     }
 
+    public function update(){
+        $sql = "UPDATE " . static::$tableName . " SET ";
+        foreach (static::$colums as $column){
+            $sql .= " ${column} = " . static::getFormatedValue($this->$column) . ",";
+        }
+        $sql[strlen($sql) - 1] = ' ';
+        $sql .= "WHERE id = {$this->id}";
+        Database::executeSQL($sql);
+    }
+
     private static function getFilters($filters){
         $sql = '';
         if (count($filters) > 0){
             $sql .= " WHERE 1 = 1";
             foreach ($filters as $column => $value){
-                $sql .= " AND ${column} = " . static::getFormatedValue($value);
-            }
+                if ($column == 'raw'){
+                    $sql .= " AND ${value}";
+                }else {
+                    $sql .= " AND ${column} = " . static::getFormatedValue($value);
+                }
+             }
         }
         return $sql;
     }

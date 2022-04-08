@@ -7,8 +7,6 @@
  * @date 2022-04-06 20:33:30
  */
 
-loadModel('WorkingHours');
-
 Database::executeSQL('DELETE FROM working_hours');
 Database::executeSQL('DELETE FROM users WHERE id > 5');
 
@@ -50,15 +48,15 @@ function getDayTemplateByOdds($regularRate, $extraRate, $lazyRate){
 
 function populateWorkingHours($userId, $initialDate, $regularRate, $extraRate, $lazyRate){
     $currentDate = $initialDate;
-    $today = new DateTime();
+    $yesterday = new DateTime();
     $columns = ['id' => null, 'user_id' => $userId, 'work_date' => $currentDate];
-
-    while(isBefore($currentDate, $today)){
+    $yesterday->modify('-1 day');
+    while(isBefore($currentDate, $yesterday)){
         if (!isWeekend($currentDate)){
             $template = getDayTemplateByOdds($regularRate, $extraRate, $lazyRate);
             $columns = array_merge($columns, $template);
             $workingHours = new WorkingHours($columns);
-            $workingHours->save();
+            $workingHours->insert();
         }
         $currentDate = getNextDay($currentDate)->format('Y-m-d');
         $columns['work_date'] = $currentDate;

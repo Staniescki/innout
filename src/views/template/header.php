@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br_utf-8">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/assets/css/comum.css" />
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/assets/css/template.css" />
     <title>In 'n Out</title>
 </head>
-<body class="hide-sidebar">
+<body>
     <header  class="header">
         <div class="logo">
             <i class="icofont-travelling mr-2"></i>
