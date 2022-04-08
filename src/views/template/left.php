@@ -13,18 +13,20 @@
                     Relatorio Mensal
                 </a>
             </li>
+            <?php if ($user->is_admin) : ?>
             <li class="nav-item">
-                <a href=".php">
+                <a href="manager_report.php">
                     <i class="icofont-chart-histogram mr-2"></i>
                     Relatorio gerencial
                 </a>
             </li>
             <li class="nav-item">
-                <a href=".php">
+                <a href="users.php">
                     <i class="icofont-users mr-2"></i>
                     Usuarios
                 </a>
             </li>
+            <?php endif; ?>
         </ul>
     </nav>
     <div class="sidebar-widgets">

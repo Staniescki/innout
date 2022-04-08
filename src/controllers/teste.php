@@ -8,6 +8,6 @@
  */
 
 echo "<pre>";
-print_r(new DateTime(getLastDayOfMonth('2019-08')));
+echo User::getCount(['id' => 3]);
 echo "</pre>";
 
